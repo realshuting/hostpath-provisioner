@@ -84,7 +84,7 @@ func (p *hostPathProvisioner) Provision(options controller.VolumeOptions) (*v1.P
 	path := path.Join(p.pvDir, options.PVC.Namespace+"-"+options.PVC.Name+"-"+options.PVName)
 	glog.Infof("creating backing directory: %v", path)
 
-	if err := os.MkdirAll(path, 0777); err != nil {
+	if err := os.MkdirAll(path, 0755); err != nil {
 		return nil, err
 	}
 
